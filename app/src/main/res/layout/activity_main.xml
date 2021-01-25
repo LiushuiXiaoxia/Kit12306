@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="cn.mycommons.kit12306.ui.MainActivity">
+
+    <Button
+        android:id="@+id/btnCheckService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启助手服务" />
+
+    <Button
+        android:id="@+id/btnOpen12306"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开12306" />
+
+    <Button
+        android:id="@+id/btnAddCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加行程日历" />
+
+    <TextView
+        android:id="@+id/tvTickInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">车票小助手</string>
+    <string name="app_desc">获取12306订票信息</string>
+</resources>
