@@ -3,6 +3,7 @@ package cn.mycommons.kit12306.ui
 import android.content.Context
 import android.content.Intent
 import android.provider.Settings
+import java.lang.RuntimeException
 
 object Navigator {
 
@@ -25,8 +26,10 @@ object Navigator {
     // com.MobileTicket
     fun goto12306(context: Context) {
         val pkg = "com.MobileTicket"
-        val intent = context.packageManager.getLaunchIntentForPackage(pkg)
-        intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val manager = context.packageManager
+        val exception = RuntimeException("App 12306 is not installed")
+        val intent = manager.getLaunchIntentForPackage(pkg) ?: throw exception
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 }

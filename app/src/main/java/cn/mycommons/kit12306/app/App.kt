@@ -38,7 +38,11 @@ class App : Application() {
     fun onServiceClose() {
         accessibilityServiceStart = true
 
-        Navigator.goto12306(getApp())
+        kotlin.runCatching {
+            Navigator.goto12306(getApp())
+        }.onFailure {
+            showToast("12306 启动失败")
+        }
     }
 
     fun onCatchTicketInfo(info: TicketInfo) {

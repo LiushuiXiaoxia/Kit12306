@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
+    <queries>
+        <!-- 声明所要进行交互的应用名 -->
+        <package android:name="com.MobileTicket" />
+    </queries>
+
     <application
         android:name="cn.mycommons.kit12306.app.App"
         android:allowBackup="true"

@@ -9,9 +9,11 @@ import cn.mycommons.kit12306.R
 import cn.mycommons.kit12306.app.getApp
 import cn.mycommons.kit12306.domain.CalendarKit
 import cn.mycommons.kit12306.model.TicketInfo
+import cn.mycommons.kit12306.util.showToast
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.lang.RuntimeException
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +33,17 @@ class MainActivity : AppCompatActivity() {
         tvTickInfo = findViewById(R.id.tvTickInfo)
 
         btnCheckService.setOnClickListener { Navigator.openAccessibilitySetting(this) }
-        btnOpen12306.setOnClickListener { Navigator.goto12306(this) }
+        btnOpen12306.setOnClickListener {
+            kotlin.runCatching {
+                Navigator.goto12306(getApp())
+            }.onFailure {
+                if (it is RuntimeException) {
+                    showToast(it.message ?: "12306 启动失败")
+                } else {
+                    showToast("12306 启动失败")
+                }
+            }
+        }
         btnAddCalendar.setOnClickListener {
             if (getApp().ticketInfo != null) {
                 CalendarKit.add(getApp().ticketInfo!!)
